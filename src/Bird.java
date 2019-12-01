@@ -1,9 +1,9 @@
 
 public class Bird {
-	public final int xPos = 200;
-	public int yPos;
-	public int defaultYPos;
-	public int diameter = 40;
+	private final int xPos = 200;
+	private int yPos;
+	private int defaultYPos;
+	private int diameter = 40;
 	private double speed;
 	private double defaultSpeed;
 	private double gravity;
@@ -21,7 +21,7 @@ public class Bird {
 		}
 	}
 	
-	public void fall(boolean down) {
+	public void fall() {
 		speed += gravity;
 		yPos += speed;
 	}
@@ -33,5 +33,17 @@ public class Bird {
 	
 	public void setEnableJump(boolean bool) {
 		enableJump = bool;
+	}
+
+	public int getyPos() {
+		return yPos;
+	}
+
+	public int getDiameter() {
+		return diameter;
+	}
+
+	public int getxPos() {
+		return xPos;
 	}
 }

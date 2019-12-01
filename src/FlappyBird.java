@@ -3,7 +3,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
-public final class Main {
+public final class FlappyBird {
 
 	private static JFrame frame;
 	public static int frameHeight = 1000;
@@ -11,13 +11,13 @@ public final class Main {
 	private static Game game;
 	
 	public static void main(String[] args) {
-		openFrame();
+		createFrame();
 		game = new Game(frame);
 		game.start();
 		
 	}
 
-	public static void openFrame() {
+	public static void createFrame() {
 		frame = new JFrame("Flappy Bird");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(frameWidth, frameHeight);
@@ -27,7 +27,7 @@ public final class Main {
 		frame.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// leer
+				// empty
 			}
 
 			@Override

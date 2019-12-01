@@ -10,7 +10,6 @@ public class Game {
 	private boolean running;
 	private Tube[] tubes = new Tube[100];
 	private Bird bird;
-	private boolean down;
 	private int topTubeHeight;
 	private int horizontalTubeGap = 330; // 330
 	private double gravity = 0.1;
@@ -57,18 +56,17 @@ public class Game {
 		for(Tube t : tubes) {
 			t.move();
 		}
-		bird.fall(down);
-		if(CollisionDetection.bottomCollision(bird.yPos)) {
+		bird.fall();
+		if(CollisionDetection.bottomCollision(bird.getyPos())) {
 			bird.reset();
 		}
-		if(CollisionDetection.topCollision(bird.yPos)) {
+		if(CollisionDetection.topCollision(bird.getyPos())) {
 			bird.setEnableJump(false);
 		} else {
 			bird.setEnableJump(true);
 		}
 		if(isSpacePressed) {
 			bird.jump();
-			down = false;
 			isSpacePressed = false;
 		}
 //		if (isRPressed) {
