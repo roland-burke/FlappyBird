@@ -8,14 +8,13 @@ public class Game {
 	private JFrame frame;
 	private DrawPanel dp;
 	private boolean running;
-	private Tube[] tubes = new Tube[100];
+	private Tube[] tubeBuffer = new Tube[100];
 	private Bird bird;
 	private int topTubeHeight;
 	private int horizontalTubeGap = 330; // 330
 	private double gravity = 0.1;
 	private int yPosBird = 50;
 	private int birdSpeed = 2;
-	private int tubeWidth = 130; // 130
 	
 	public Game(JFrame frame) {
 		this.frame = frame;
@@ -27,10 +26,10 @@ public class Game {
 		int x = 1000;
 		for(int i = 0; i < 100; ++i) {
 			topTubeHeight = ThreadLocalRandom.current().nextInt(80, 470);
-			tubes[i] = new Tube(x, topTubeHeight, tubeWidth);
-			x += horizontalTubeGap + tubeWidth;
+			tubeBuffer[i] = new Tube(x, topTubeHeight);
+			x += horizontalTubeGap + Tube.width;
 		}
-		dp = new DrawPanel(tubes, bird);
+		dp = new DrawPanel(tubeBuffer, bird);
 		frame.add(dp);
 	}
 	
@@ -53,7 +52,7 @@ public class Game {
 	}
 	
 	private void tick() {
-		for(Tube t : tubes) {
+		for(Tube t : tubeBuffer) {
 			t.move();
 		}
 		bird.fall();

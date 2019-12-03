@@ -1,16 +1,15 @@
 
 public class Tube {
-	private final int width;
+	public static final int width = 130;
 	private final int yPosTop = 0;
 	private final int verticalGap = 230;
 	private int xPos;
 	private int heightTop;
 	private int speed = 3;
 	
-	public Tube(int xPos, int height, int width) {
+	public Tube(int xPos, int height) {
 		this.xPos = xPos;
 		this.heightTop = height;
-		this.width = width;
 	}
 	
 	public void move() {
